@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,24 +7,19 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        List<Character> listWord = new ArrayList<>();
-        listWord.add('п');
-        listWord.add('р');
-        listWord.add('и');
-        listWord.add('в');
-        listWord.add('е');
-        listWord.add('т');
-        listWord.add(' ');
-        listWord.add('м');
-        listWord.add('и');
-        listWord.add('р');
-        Cipher cipher = new Cipher(1);
+        List<Character> listWord = Arrays.asList('к','р','и','п','т','о','г','р','а','ф','и','я',' ', 'э', 'т', 'о', ' ', 'а','л','г','о','р','и','т','м','ы', ' ', 'ш','и','ф','р','о','в','а','н','и','я',' ', 'д','а','н','н','ы','х');
+
+        Cipher cipher = new Cipher();
         for (int i = 0; i < listWord.size(); i++) {
             System.out.print(listWord.get(i));
         }
-        System.out.println();
-        cipher.cipher(listWord);
-        cipher.cipher(listWord);
+        cipher.encrypt(listWord, 3);
+        System.out.println("\nencrypt");
+        for (int i = 0; i < listWord.size(); i++) {
+            System.out.print(listWord.get(i));
+        }
+        System.out.println("\ndecrypt");
+        cipher.decrypt(listWord, 3);
         for (int i = 0; i < listWord.size(); i++) {
             System.out.print(listWord.get(i));
         }
