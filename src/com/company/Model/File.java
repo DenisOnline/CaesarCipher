@@ -30,4 +30,17 @@ public class File {
             e.printStackTrace();
         }
     }
+
+    public void clear(String way) {
+        try (BufferedWriter buffWriter = new BufferedWriter(new FileWriter(way));
+             BufferedReader reader = new BufferedReader(new FileReader(way))) {
+            while (reader.ready()) {
+                buffWriter.write("");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

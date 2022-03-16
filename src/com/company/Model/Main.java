@@ -16,6 +16,7 @@ public class Main {
 
         cipher.encrypt(listWord, 4);
         cipher.decrypt(listWord, 4);
-        file.write(listWord, wayOutput);
+        //file.write(listWord, wayOutput);
+        file.clear(wayOutput);
     }
 }
