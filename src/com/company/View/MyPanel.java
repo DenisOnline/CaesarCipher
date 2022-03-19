@@ -9,8 +9,12 @@ import java.awt.event.ActionListener;
 public class MyPanel extends JPanel {
     Controller controller;
     public MyPanel() {
-        JButton encryptingTextWithKey = new JButton("Зашифровать по ключу");
-        JButton decryptingTextWithKey = new JButton("Расшифровать по ключу");
+        JButton encryptingTextWithKey = new JButton("Зашифровать");
+        JButton decryptingTextWithKey = new JButton("Расшифровать");
+        JLabel textKeyForEncrypt = new JLabel("Ключ шифрования: ");
+        JLabel textKeyForDencrypt = new JLabel("Ключ расшифрования: ");
+        JTextField keyForEncropt = new JTextField(10);
+        JTextField keyForDencropt = new JTextField(10);
 
         encryptingTextWithKey.addActionListener(new ActionListener() {
             @Override
@@ -27,7 +31,11 @@ public class MyPanel extends JPanel {
         });
 
         add(encryptingTextWithKey);
+        add(textKeyForEncrypt);
+        add(keyForEncropt);
         add(decryptingTextWithKey);
+        add(textKeyForDencrypt);
+        add(keyForDencropt);
     }
 
     public void setController(Controller controller) {
