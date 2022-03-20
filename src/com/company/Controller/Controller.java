@@ -27,24 +27,29 @@ public class Controller {
         jFileChooser = new JFileChooser();
     }
 
-    public void encrypt() {
+    public void encrypt(int key) {
         jFileChooser.showOpenDialog(panel);
         file.read(jFileChooser.getSelectedFile(), listWord);
         file.clear(jFileChooser.getSelectedFile());
-        file.lowerTexts(listWord);
-        cipher.encrypt(listWord, 4);
-        file.upperTexts(listWord);
+        cipher.encrypt(listWord, key);
         file.write(jFileChooser.getSelectedFile(), listWord);
         listWord.clear();
     }
 
-    public void decrypt() {
+    public void decrypt(int key) {
         jFileChooser.showOpenDialog(panel);
         file.read(jFileChooser.getSelectedFile(), listWord);
         file.clear(jFileChooser.getSelectedFile());
-        file.lowerTexts(listWord);
-        cipher.decrypt(listWord, 4);
-        file.upperTexts(listWord);
+        cipher.decrypt(listWord, key);
+        file.write(jFileChooser.getSelectedFile(), listWord);
+        listWord.clear();
+    }
+
+    public void bruteForce() {
+        jFileChooser.showOpenDialog(panel);
+        file.read(jFileChooser.getSelectedFile(), listWord);
+        file.clear(jFileChooser.getSelectedFile());
+        cipher.bruteForce(listWord);
         file.write(jFileChooser.getSelectedFile(), listWord);
         listWord.clear();
     }

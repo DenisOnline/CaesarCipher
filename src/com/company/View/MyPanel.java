@@ -11,6 +11,7 @@ public class MyPanel extends JPanel {
     public MyPanel() {
         JButton encryptingTextWithKey = new JButton("Зашифровать");
         JButton decryptingTextWithKey = new JButton("Расшифровать");
+        JButton hacking = new JButton("Взломать");
         JLabel textKeyForEncrypt = new JLabel("Ключ шифрования: ");
         JLabel textKeyForDencrypt = new JLabel("Ключ расшифрования: ");
         JTextField keyForEncropt = new JTextField(10);
@@ -19,14 +20,21 @@ public class MyPanel extends JPanel {
         encryptingTextWithKey.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.encrypt();
+                controller.encrypt(Integer.parseInt(keyForEncropt.getText()));
             }
         });
 
         decryptingTextWithKey.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.decrypt();
+                controller.decrypt(Integer.parseInt(keyForDencropt.getText()));
+            }
+        });
+
+        hacking.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.bruteForce();
             }
         });
 
@@ -36,6 +44,7 @@ public class MyPanel extends JPanel {
         add(decryptingTextWithKey);
         add(textKeyForDencrypt);
         add(keyForDencropt);
+        add(hacking);
     }
 
     public void setController(Controller controller) {
