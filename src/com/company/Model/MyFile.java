@@ -9,7 +9,6 @@ import java.util.List;
 public class MyFile {
 
     public List<Character> read(File directory, List<Character> list) {
-        String charset = "UTF-8";
         try (BufferedReader reader = new BufferedReader(new FileReader(directory, StandardCharsets.UTF_8))) {
             while (reader.ready()) {
                 int value = reader.read();
@@ -24,7 +23,7 @@ public class MyFile {
     }
 
     public void write(File directory, List<Character> list) {
-        try (BufferedWriter buffWriter = new BufferedWriter(new FileWriter(directory))) {
+        try (BufferedWriter buffWriter = new BufferedWriter(new FileWriter(directory, StandardCharsets.UTF_8))) {
             for (Character character : list) {
                 buffWriter.write(character);
             }
