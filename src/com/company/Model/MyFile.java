@@ -1,12 +1,16 @@
 package com.company.Model;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.List;
 
 public class MyFile {
 
     public List<Character> read(File directory, List<Character> list) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(directory))) {
+        String charset = "UTF-8";
+        try (BufferedReader reader = new BufferedReader(new FileReader(directory, StandardCharsets.UTF_8))) {
             while (reader.ready()) {
                 int value = reader.read();
                 list.add((char)value);

@@ -11,23 +11,41 @@ public class MyPanel extends JPanel {
     public MyPanel() {
         JButton encryptingTextWithKey = new JButton("Зашифровать");
         JButton decryptingTextWithKey = new JButton("Расшифровать");
-        JButton hacking = new JButton("Взломать");
-        JLabel textKeyForEncrypt = new JLabel("Ключ шифрования: ");
-        JLabel textKeyForDencrypt = new JLabel("Ключ расшифрования: ");
+        JButton hacking = new JButton("Взлом Brute Force");
+        JLabel textKeyForEncrypt = new JLabel("Ключ шифрования:");
+        JLabel textKeyForDencrypt = new JLabel("Ключ расшифрования:");
         JTextField keyForEncropt = new JTextField(10);
         JTextField keyForDencropt = new JTextField(10);
 
         encryptingTextWithKey.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.encrypt(Integer.parseInt(keyForEncropt.getText()));
+                try {
+                    controller.encrypt(Integer.parseInt(keyForEncropt.getText()));
+                } catch (NumberFormatException s) {
+                    JFrame frame = new JFrame();
+                    frame.setSize(320, 90);
+                    frame.setVisible(true);
+                    frame.setResizable(false);
+                    JTextField error = new JTextField("Поле \'Ключ шифрования:\' должно быть заполнено!");
+                    frame.add(error);
+                }
             }
         });
 
         decryptingTextWithKey.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.decrypt(Integer.parseInt(keyForDencropt.getText()));
+                try {
+                    controller.decrypt(Integer.parseInt(keyForEncropt.getText()));
+                } catch (NumberFormatException s) {
+                    JFrame frame = new JFrame();
+                    frame.setSize(340, 90);
+                    frame.setVisible(true);
+                    frame.setResizable(false);
+                    JTextField error = new JTextField("Поле \'Ключ расшифрования:\' должно быть заполнено!");
+                    frame.add(error);
+                }
             }
         });
 
